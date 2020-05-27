@@ -6,10 +6,15 @@
 
 <h5><%= current_user ? current_user.email : "Authorize please!" %></h5>
 
-
-<% @crews.each do |crew| %>
+<% unless @crews %>
   <hr>
-  <h5><%= crew.name %></h5>
-  <p><%= crew.description %></p>
+  <h5><%= 'Not found any crews!' %></h5>
   <hr>
+<% else %>
+  <% @crews.each do |crew| %>
+    <hr>
+    <h5><%= crew.name %></h5>
+    <p><%= crew.description %></p>
+    <hr>
+  <% end %>
 <% end %>
