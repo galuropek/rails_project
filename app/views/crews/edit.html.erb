@@ -1,6 +1,6 @@
-<h2>Create a new crew</h2>
+<h2>Edit post</h2>
 
-<%= form_for :crew, url: crews_path do |f| %>
+<%= form_for :crew, url: crew_path(@crew), method: :patch do |f| %>
   <p>
     Crew name<br>
     <%= f.text_field :name %>

@@ -18,8 +18,25 @@ class CrewsController < ApplicationController
     params[:crew][:owner] = current_user.id
     @crew = Crew.new(crew_params)
 
-    @crew.save
-    redirect_to @crew
+    if @crew.save
+      redirect_to @crew
+    else
+      render 'new'
+    end
+  end
+
+  def edit
+    @crew = Crew.find(params[:id])
+  end
+
+  def update
+    @crew = Crew.find(params[:id])
+
+    if @crew.update(crew_params)
+      redirect_to @crew
+    else
+      render 'edit'
+    end
   end
 
   private
