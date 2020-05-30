@@ -17,6 +17,14 @@
     <p><%= crew.description %></p>
     <%= link_to "See more", crew_path(crew), :class => 'btn btn-warning' %>
     <%= link_to "Edit", edit_crew_path(crew), :class => 'btn btn-warning' %>
+    <%= link_to "Remove",
+                crew_path(crew),
+                method: :delete,
+                data: {
+                    confirm: "Are you sure that you want to remove this Crew?"
+                },
+                :class => 'btn btn-warning'
+    %>
     <hr>
   <% end %>
 <% end %>

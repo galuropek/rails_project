@@ -39,6 +39,13 @@ class CrewsController < ApplicationController
     end
   end
 
+  def destroy
+    @crew = Crew.find(params[:id])
+
+    @crew.destroy
+    redirect_to crews_path
+  end
+
   private
 
   def crew_params
