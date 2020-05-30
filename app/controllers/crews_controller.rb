@@ -15,14 +15,8 @@ class CrewsController < ApplicationController
 
   def create
     # render plain: params[:crew].inspect
-    params[:crew][:owner] = current_user.id
-    @crew = Crew.new(crew_params)
-
-    if @crew.save
-      redirect_to @crew
-    else
-      render 'new'
-    end
+    @crew = current_user.crews.create(crew_params)
+    redirect_to crew_path(@crew)
   end
 
   def edit

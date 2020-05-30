@@ -14,8 +14,9 @@
   <% else %>
     <% @crews.each do |crew| %>
       <hr>
-      <h5><%= crew.name %></h5>
-      <p><%= crew.description %></p>
+      <h5>Name: <%= crew.name %></h5>
+      <p>Description: <%= crew.description %></p>
+      <p>Owner: <%= User.find(crew.user_id).email %></p>
       <%= link_to "See more", crew_path(crew), :class => 'btn btn-warning' %>
       <%= link_to "Edit", edit_crew_path(crew), :class => 'btn btn-warning' %>
       <%= link_to "Remove", crew_path(crew), method: :delete, data: {
