@@ -7,5 +7,21 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/qqc_development</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="Rails qqcrew: development" uuid="5e633ed1-cd4e-4cb3-9460-2a9dad7bf66f">
+      <driver-ref>greenplum</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/qqc_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails qqcrew: test" uuid="5f3e2965-728c-42e2-a9b8-2cdceba68eb8">
+      <driver-ref>greenplum</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/qqc_test</jdbc-url>
+    </data-source>
   </component>
 </project>
