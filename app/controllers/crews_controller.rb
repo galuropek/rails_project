@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 class CrewsController < ApplicationController
+  before_action :authenticate_user!, except: :show
 
   def index
     @crews = Crew.all
   end
 
-  def new
-
-  end
+  def new; end
 
   def show
     @crew = Crew.find(params[:id])
@@ -21,6 +20,8 @@ class CrewsController < ApplicationController
 
   def edit
     @crew = Crew.find(params[:id])
+
+    render 'show' unless current_user_is_owner?
   end
 
   def update
@@ -35,14 +36,21 @@ class CrewsController < ApplicationController
 
   def destroy
     @crew = Crew.find(params[:id])
-
-    @crew.destroy
-    redirect_to crews_path
+    if current_user_is_owner?
+      @crew.destroy
+      redirect_to crews_path
+    else
+      render 'show'
+    end
   end
 
   private
 
   def crew_params
     params.require(:crew).permit(:name, :description)
+  end
+
+  def current_user_is_owner?
+    current_user.id == @crew.user_id
   end
 end
