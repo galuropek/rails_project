@@ -7,25 +7,28 @@
   <a href="<%= new_user_registration_path %>">Sign up</a>
   <br>
   <a href="<%= destroy_user_session_path %>" data-method="delete">Logout</a>
-
-  <h5><%= current_user ? current_user.email : "Authorize please!" %></h5>
+  <% if current_user %>
+    <p><%= current_user.email %> <a href="<%= new_crew_path %>">Create a new crew.</a></p>
+  <% else %>
+    <h5><b>Authorize please!</b></h5>
+  <% end %>
 
   <% unless @crews %>
     <hr>
-    <h5><%= 'Not found any crews!' %></h5>
+    <h5>Not found any crews!</h5>
     <hr>
   <% else %>
-    <% @crews.each do |crew| %>
-      <hr>
-      <h5>Name: <%= crew.name %></h5>
-      <p>Description: <%= crew.description %></p>
-      <p>Owner: <%= User.find(crew.user_id).email %></p>
-      <%= link_to "See more", crew_path(crew), :class => 'btn btn-warning' %>
-      <%= link_to "Edit", edit_crew_path(crew), :class => 'btn btn-warning' %>
-      <%= link_to "Remove", crew_path(crew), method: :delete, data: {
-          confirm: "Are you sure that you want to remove this Crew?"
-      }, :class => 'btn btn-warning' %>
-      <hr>
+    <% if user_signed_in? %>
+      <% @crews.each do |crew| %>
+        <hr>
+        <h5>Name: <%= crew.name %></h5>
+        <p>Description: <%= crew.description %></p>
+        <p>Owner: <%= User.find(crew.user_id).email %></p>
+        <%= link_to "See more", crew_path(crew), :class => 'btn btn-warning' %>
+        <hr>
+      <% end %>
+    <% else %>
+      <h5>Log in to see crews.</h5>
     <% end %>
   <% end %>
 </div>
