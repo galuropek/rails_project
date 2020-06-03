@@ -1,5 +1,5 @@
-<h1><%= @crew.name %></h1>
-<h5><%= @crew.description %></h5>
+<h1>Crew name: <%= @crew.name %></h1>
+<h5>crew description: <%= @crew.description %></h5>
 
 <%= link_to "Home", crews_path(@crew), :class => 'btn btn-warning' %>
 <% if current_user.id == @crew.user_id %>
@@ -9,3 +9,14 @@
   }, :class => 'btn btn-warning' %>
 <% end %>
 <%= link_to "Create", new_crew_event_path(@crew), :class => 'btn btn-warning' %>
+<hr>
+<% @crew.events.each do |event| %>
+  <hr>
+  <p>title: <%= event.title %></p>
+  <p>description: <%= event.description %></p>
+  <p>start_date: <%= event.start %></p>
+  <p>end_date: <%= event.end %></p>
+  <p>created_by: <%= User.find(event.user_id).email %></p>
+  <hr>
+<% end %>
+<hr>

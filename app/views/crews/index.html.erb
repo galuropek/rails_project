@@ -1,35 +1,33 @@
-<div class="container">
-  <h1>Index page</h1>
-  <h2>q;)</h2>
+<h1>Index page</h1>
+<h2>q;)</h2>
 
-  <a href="<%= new_user_session_path %>">Sign in</a>
-  <br>
-  <a href="<%= new_user_registration_path %>">Sign up</a>
-  <br>
-  <a href="<%= destroy_user_session_path %>" data-method="delete">Logout</a>
-  <% if current_user %>
-    <p><%= current_user.email %> <a href="<%= new_crew_path %>">Create a new crew.</a></p>
-  <% else %>
-    <h5><b>Authorize please!</b></h5>
-  <% end %>
+<a href="<%= new_user_session_path %>">Sign in</a>
+<br>
+<a href="<%= new_user_registration_path %>">Sign up</a>
+<br>
+<a href="<%= destroy_user_session_path %>" data-method="delete">Logout</a>
+<% if current_user %>
+  <p><%= current_user.email %> <a href="<%= new_crew_path %>">Create a new crew.</a></p>
+<% else %>
+  <h5><b>Authorize please!</b></h5>
+<% end %>
+<hr>
+<% unless @crews %>
   <hr>
-  <% unless @crews %>
-    <hr>
-    <h5>Not found any crews!</h5>
-    <hr>
-  <% else %>
-    <%# if user_signed_in? %>
-      <% @crews.each do |crew| %>
-        <hr>
-        <h5>Name: <%= crew.name %></h5>
-        <p>Description: <%= crew.description %></p>
-        <p>Owner: <%= User.find(crew.user_id).email %></p>
-        <%= link_to "See more", crew_path(crew), :class => 'btn btn-warning' %>
-        <hr>
-      <% end %>
-    <%# else %>
-<!--      <h5>Log in to see crews.</h5>-->
-    <%# end %>
-  <% end %>
+  <h5>Not found any crews!</h5>
   <hr>
-</div>
+<% else %>
+  <%# if user_signed_in? %>
+  <% @crews.each do |crew| %>
+    <hr>
+    <h5>Name: <%= crew.name %></h5>
+    <p>Description: <%= crew.description %></p>
+    <p>Owner: <%= User.find(crew.user_id).email %></p>
+    <%= link_to "See more", crew_path(crew), :class => 'btn btn-warning' %>
+    <hr>
+  <% end %>
+  <%# else %>
+  <!--      <h5>Log in to see crews.</h5>-->
+  <%# end %>
+<% end %>
+<hr>
