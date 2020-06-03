@@ -2,5 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'crews#index'
 
-  resources :crews
+  resources :crews do
+    resources :events
+  end
 end

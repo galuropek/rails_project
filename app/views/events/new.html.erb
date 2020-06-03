@@ -1,0 +1,24 @@
+<h2>Create a new event</h2>
+
+<%= form_for([@crew, @crew.events.build ]) do |f| %>
+  <p>
+    Event name<br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    Description<br>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    Start date<br>
+    <%= f.datetime_field :start %>
+  </p>
+  <p>
+    End date<br>
+    <%= f.datetime_field :end %>
+  </p>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <p>
+    <%= f.submit :class => 'btn btn-warning' %>
+  </p>
+<% end %>

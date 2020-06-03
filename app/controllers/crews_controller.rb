@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class CrewsController < ApplicationController
-  before_action :authenticate_user!, except: :show
+  before_action :authenticate_user!, except: :index
 
   def index
     @crews = Crew.all
