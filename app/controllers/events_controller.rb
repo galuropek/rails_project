@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @events = Event.all
@@ -6,7 +7,6 @@ class EventsController < ApplicationController
 
   def new
     @crew = Crew.find(params[:crew_id])
-    puts 'hello'
   end
 
   def create
@@ -20,9 +20,5 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :description, :start, :end, :user_id)
-  end
-
-  def prepare_date(e_params, field)
-    e_params[field] = Date.parse(e_params[field])
   end
 end
