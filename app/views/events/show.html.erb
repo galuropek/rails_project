@@ -1,0 +1,5 @@
+<h5>title: <%= @event.title %></h5>
+<p>description: <%= @event.description %></p>
+<p>start_date: <%= @event.start %></p>
+<p>end_date: <%= @event.end %></p>
+<p>created_by: <%= User.find(@event.user_id).email %></p>

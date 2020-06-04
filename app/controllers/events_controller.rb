@@ -16,6 +16,10 @@ class EventsController < ApplicationController
     redirect_to crew_path(@crew)
   end
 
+  def show
+    @event = Event.find(params[:crew_id])
+  end
+
   private
 
   def event_params
