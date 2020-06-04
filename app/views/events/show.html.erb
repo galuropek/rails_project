@@ -3,3 +3,5 @@
 <p>start_date: <%= @event.start %></p>
 <p>end_date: <%= @event.end %></p>
 <p>created_by: <%= User.find(@event.user_id).email %></p>
+
+<%= link_to "Edit", edit_crew_event_path(@event), :class => 'btn btn-warning' %>
