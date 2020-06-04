@@ -5,3 +5,6 @@
 <p>created_by: <%= User.find(@event.user_id).email %></p>
 
 <%= link_to "Edit", edit_crew_event_path(@event), :class => 'btn btn-warning' %>
+<%= link_to "Remove", crew_event_path(@event), method: :delete, data: {
+    confirm: "Are you sure that you want to remove this Event?"
+}, :class => 'btn btn-warning' %>

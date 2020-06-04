@@ -27,7 +27,6 @@ class EventsController < ApplicationController
   end
 
   def update
-    @crew = Crew.find(params[:id])
     @event = Event.find(params[:crew_id])
 
     if @event.update(event_params)
@@ -35,6 +34,20 @@ class EventsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @crew = Crew.find(params[:id])
+    @event = Event.find(params[:crew_id])
+
+    @event.destroy
+    redirect_to crew_path(@crew)
+    # if current_user_is_owner?(@crew)
+    #   @crew.destroy
+    #   redirect_to crews_path
+    # else
+    #   render 'show'
+    # end
   end
 
   private
