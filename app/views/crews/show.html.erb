@@ -1,23 +1,45 @@
-<h1>Crew name: <%= @crew.name %></h1>
-<h5>crew description: <%= @crew.description %></h5>
+<main role="main">
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1><%= @crew.name %></h1>
+      <p class="lead text-muted"><%= @crew.description %></p>
+      <p>
+        <a href="#" class="btn btn-primary my-2">Main call to action</a>
+        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+      </p>
+    </div>
+  </section>
 
-<%= link_to "Home", crews_path(@crew), :class => 'btn btn-warning' %>
-<% if current_user.id == @crew.user_id %>
-  <%= link_to "Edit", edit_crew_path(@crew), :class => 'btn btn-warning' %>
-  <%= link_to "Remove", crew_path(@crew), method: :delete, data: {
-      confirm: "Are you sure that you want to remove this Crew?"
-  }, :class => 'btn btn-warning' %>
-<% end %>
-<%= link_to "Create", new_crew_event_path(@crew), :class => 'btn btn-warning' %>
-<hr>
-<% @crew.events.each do |event| %>
-  <hr>
-  <p>title: <%= event.title %></p>
-  <p>description: <%= event.description %></p>
-  <p>start_date: <%= event.start %></p>
-  <p>end_date: <%= event.end %></p>
-  <p>created_by: <%= User.find(event.user_id).email %></p>
-  <%= link_to "See more", crew_event_path(event), :class => 'btn btn-warning' %>
-  <hr>
-<% end %>
-<hr>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <% @crew.events.each do |event| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"/>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+              </svg>
+              <div class="card-body">
+                <p>title: <%= event.title %></p>
+                <p>description: <%= event.description %></p>
+                <p>start_date: <%= event.start %></p>
+                <p>end_date: <%= event.end %></p>
+                <p>created_by: <%= User.find(event.user_id).email %></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <%= link_to "View", crew_event_path(event), :class => 'btn btn-sm btn-outline-secondary' %>
+                    <%= link_to "Edit", edit_crew_event_path(event), :class => 'btn btn-sm btn-outline-secondary' %>
+                  </div>
+                  <small class="text-muted"><%= event.created_at %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <hr>
+      </div>
+    </div>
+  </div>
+</main>

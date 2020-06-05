@@ -8,23 +8,25 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<!--<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">-->
-<!--  <header class="masthead mb-auto">-->
-<!--    <div class="inner">-->
-<!--      <h3 class="masthead-brand">Cover</h3>-->
-<!--      <nav class="nav nav-masthead justify-content-center">-->
-<!--        <a class="nav-link active" href="#">Home</a>-->
-<!--        <a class="nav-link" href="#">Features</a>-->
-<!--        <a class="nav-link" href="#">Contact</a>-->
-<!--      </nav>-->
-<!--    </div>-->
-<!--  </header>-->
-<!--</div>-->
-<div class="container">
-  <%= yield %>
-</div>
+<%= yield %>
 </body>
 </html>
