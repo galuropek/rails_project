@@ -54,7 +54,8 @@
             <%= link_to "Create a new Crew", new_crew_path, :class => "nav-link" %>
           </li>
           <li>
-            <a class="nav-link disabled"><%= current_user.email %></a>
+            <%= link_to "#{current_user.email}", user_path(current_user), :class => "nav-link" %>
+<!--            <a class="nav-link disabled"><%#=  %></a>-->
           </li>
         <% end %>
         <!--        <li class="nav-item">-->
