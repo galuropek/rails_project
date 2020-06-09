@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :crews
   has_many :events
+  has_one :user_detail
 end
