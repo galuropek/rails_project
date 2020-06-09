@@ -1,3 +1,13 @@
 <h1>User page</h1>
-<h5><%= @user.email %></h5>
-<p>Add user details latter</p>
+<% if @user.user_detail %>
+  <p>
+    nickname: <%= @user.user_detail.nickname %><br>
+    name: <%= @user.user_detail.name %><br>
+    first_name: <%= @user.user_detail.first_name %>
+  </p>
+<% else %>
+  <p>
+    You can add more info about yourself.
+  </p>
+<% end %>
+<%= link_to "Edit user details", edit_user_path(@user), :class => 'btn' %>
